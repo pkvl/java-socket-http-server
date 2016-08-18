@@ -78,7 +78,7 @@ public class HttpRequest {
                 }
 
                 out.print(getHttpResponse()); // Print info about user
-                out.close(); // Flush and close the output stream
+                //out.close(); // Flush and close the output stream
             } catch (IOException e) {
                 e.printStackTrace();
             }
