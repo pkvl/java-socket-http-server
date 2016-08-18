@@ -16,7 +16,6 @@ import java.sql.SQLException;
 public class MainClass {
 
     public static void main(String[] args) throws IOException, URISyntaxException, SQLException {
-        // TODO Auto-generated method stub
         HttpRequest hr = new HttpRequest();
         hr.startServer();
     }
