@@ -19,7 +19,6 @@ public class DbWork {
     }
 
     public String addNewUser(User user) throws SQLException {
-        // TODO Auto-generated method stub
         try {
             String query = "SELECT * FROM user WHERE ID = " + user.getUserid() + ";";
 
@@ -34,7 +33,6 @@ public class DbWork {
 
             return "User successfully added\n" + getUserInfo(user.getUserid());
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             return "Error while adding new user\n";
         }
@@ -59,7 +57,6 @@ public class DbWork {
             conn.close();
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return new User(id, name, surname);
