@@ -1,7 +1,5 @@
 package main;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,7 +8,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 public class HttpRequest {
+
+    private final Logger logger = Logger.getLogger(this.getClass());
 
     final String GET = "GET";
     final String POST = "POST";
@@ -29,7 +31,8 @@ public class HttpRequest {
     public void startServer() throws IOException, SQLException {
         //server = new ServerSocket(PORT);
 
-        System.out.println("Listening for connection on port " + PORT + "...");
+        //System.out.println("Listening for connection on port " + PORT + "...");
+        logger.debug("Listening for connection on port " + PORT + "...");
 
         while (true) {
             try (Socket socket = server.accept();
@@ -37,6 +40,7 @@ public class HttpRequest {
                  PrintWriter out = new PrintWriter(socket.getOutputStream()))
             // Initialize reader and writer
             {
+                logger.trace("Client connected");
                 // Start sending reply, using the HTTP 1.1 protocol
                 out.print("HTTP/1.1 200 \r\n");
                 out.print("Content-Type: text/plain\r\n");
@@ -54,7 +58,7 @@ public class HttpRequest {
                     method = parts[0];
                     method = method.substring(0, method.length() - 1); // Remove space
                     //System.out.println(method + " " + symbols);
-
+                    logger.debug("Method is " + method);
                     // Return HTTP response with info about user, stored in DB
                     if (GET.equals(method)) {
                         symbols = parts[1];
@@ -74,7 +78,8 @@ public class HttpRequest {
                     }
                     //System.out.println(id);
                 } catch (NumberFormatException e) {
-                    System.out.println("Invalid id number");
+                    //System.out.println("Invalid id number");
+                    logger.error("Invalid id number");
                 }
 
                 out.print(getHttpResponse()); // Print info about user
