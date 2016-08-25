@@ -43,7 +43,7 @@ public class SimpleServer {
                 // Get Request lines
                 String parts[] = getRequest(in, out);
                 requestHandler(parts);
-                out.print(getResponse()); // Print info about user
+                out.print(getResponse());
             } catch (IOException e) {
                 e.printStackTrace();
             }
