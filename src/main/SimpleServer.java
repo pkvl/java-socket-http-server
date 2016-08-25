@@ -1,5 +1,8 @@
 package main;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,34 +11,32 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
 
-import org.apache.log4j.Logger;
-
-public class SocketServer {
+public class SimpleServer {
 
     final String GET = "GET";
     final String POST = "POST";
     final int PORT = 1234;
 
-    private final Logger logger = Logger.getLogger(this.getClass());
+    private final Logger LOGGER = LogManager.getLogger(SimpleServer.class);
     private String response;
     private ServerSocket server;
 
     private String method;
     private String symbols;
 
-    public SocketServer() throws IOException {
+    public SimpleServer() throws IOException {
         this.server = new ServerSocket(PORT);
     }
 
     public void startServer() throws IOException, SQLException {
-        logger.debug("Listening for connection on port " + PORT + "...");
+        LOGGER.debug("Listening for connection on port " + PORT + "...");
 
         while (true) {
             try (Socket socket = server.accept();
                  BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter out = new PrintWriter(socket.getOutputStream()))
             {
-                logger.trace("Client connected");
+                LOGGER.info("Client connected");
                 printReply(out);
 
                 // Read HTTP request from the client
@@ -54,7 +55,7 @@ public class SocketServer {
 
         try {
             method = ParseHelper.extractIndex(ParseHelper.removeSpaces(parts[0]), 0); // Remove space
-            logger.debug("Method is " + method);
+            LOGGER.info("Method is " + method);
 
             switch (method) {
                 // Set HTTP response with info about user, stored in DB
@@ -75,11 +76,11 @@ public class SocketServer {
                     setResponse(new UserDAO().add(new User(id, name, surname)));
                     break;
                 default:
-                    logger.error("Wrong REST-method");
+                    LOGGER.error("Wrong REST-method");
                     break;
             }
         } catch (NumberFormatException e) {
-            logger.error("Invalid id number");
+            LOGGER.error("Invalid id number");
         }
     }
 
