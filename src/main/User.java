@@ -1,35 +1,36 @@
 package main;
 
 public class User {
-	private int userid;
-	private String username;
-	private String usersurname;
-		
-	public User(int userid, String username, String usersurname) {
-		super();
-		this.userid = userid;
-		this.username = username;
-		this.usersurname = usersurname;
-	}
-	public int getUserid() {
-		return userid;
-	}
+    private int id;
+    private String name;
+    private String surname;
 
-	//	public void setUserid(int userid) {
-//		this.userid = userid;
-//	}
-	public String getUsername() {
-		return username;
-	}
+    public User(int id, String name, String surname) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+    }
 
-	//	public void setUsername(String username) {
-//		this.username = username;
+    public int getId() {
+        return id;
+    }
+
+    //	public void setUserid(int id) {
+//		this.id = id;
 //	}
-	public String getUsersurname() {
-		return usersurname;
-	}
-//	public void setUsersurname(String usersurname) {
-//		this.usersurname = usersurname;
+    public String getName() {
+        return name;
+    }
+
+    //	public void setUsername(String name) {
+//		this.name = name;
+//	}
+    public String getSurname() {
+        return surname;
+    }
+//	public void setUsersurname(String surname) {
+//		this.surname = surname;
 //	}
 	
 	

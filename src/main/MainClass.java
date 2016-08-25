@@ -1,11 +1,11 @@
 package main;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
-
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class MainClass {
 
@@ -13,7 +13,7 @@ public class MainClass {
 
     public static void main(String[] args) throws IOException, URISyntaxException, SQLException {
         logger.trace("Application started");
-        HttpRequest hr = new HttpRequest();
+        SocketServer hr = new SocketServer();
         hr.startServer();
     }
 }
