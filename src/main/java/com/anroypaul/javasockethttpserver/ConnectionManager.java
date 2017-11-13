@@ -26,16 +26,16 @@ public class ConnectionManager {
             Class.forName(JDBC_DRIVER);
             try {
                 conn = DriverManager.getConnection(DB_URL, USER, PASS);
-//                System.out.println("Connection established successfully");
+                // System.out.println("Connection established successfully");
                 LOG.info("Connection established successfully");
             } catch (SQLException ex) {
                 // log an exception. fro example:
-//                System.out.println("Failed to create the database connection.");
+                // System.out.println("Failed to create the database connection.");
                 LOG.error("Failed to create the database connection.");
             }
         } catch (ClassNotFoundException ex) {
             // log an exception. for example:
-//            System.out.println("Driver not found.");
+            // System.out.println("Driver not found.");
             LOG.error("Driver not found.");
         }
         return conn;

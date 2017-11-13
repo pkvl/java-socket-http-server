@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 
-public class MainClass {
+public class SocketHttpServer {
 
-    private static final Logger LOGGER = LogManager.getLogger(MainClass.class);
+    private static final Logger LOGGER = LogManager.getLogger(SocketHttpServer.class);
 
     public static void main(String[] args) throws IOException, URISyntaxException, SQLException {
         LOGGER.info("Application started");

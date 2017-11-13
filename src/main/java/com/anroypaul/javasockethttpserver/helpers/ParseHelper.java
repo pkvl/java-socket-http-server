@@ -11,13 +11,11 @@ public class ParseHelper {
     }
 
     public static String[] removeSpaces(String part) {
-        String[] splitted = part.split(" ");
-        return splitted;
+        return part.split(" ");
     }
 
     public static String[] removeSpaces(String[] parts, int index) {
-        String[] splitted = parts[index].split(" ");
-        return splitted;
+        return parts[index].split(" ");
     }
 
     public static String extractIndex(String[] parts, int index) {

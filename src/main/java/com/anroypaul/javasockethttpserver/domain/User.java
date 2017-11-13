@@ -1,6 +1,9 @@
 package com.anroypaul.javasockethttpserver.domain;
 
 public class User {
+
+    public static String TABLE_NAME = "USER";
+
     private int id;
     private String name;
     private String surname;
@@ -16,22 +19,12 @@ public class User {
         return id;
     }
 
-    //	public void setUserid(int id) {
-//		this.id = id;
-//	}
     public String getName() {
         return name;
     }
 
-    //	public void setUsername(String name) {
-//		this.name = name;
-//	}
     public String getSurname() {
         return surname;
     }
-//	public void setUsersurname(String surname) {
-//		this.surname = surname;
-//	}
-	
-	
+
 }
