@@ -1,5 +1,7 @@
-package main;
+package com.anroypaul.javasockethttpserver.dao;
 
+import com.anroypaul.javasockethttpserver.ConnectionManager;
+import com.anroypaul.javasockethttpserver.domain.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

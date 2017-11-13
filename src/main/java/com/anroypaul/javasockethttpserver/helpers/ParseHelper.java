@@ -1,4 +1,4 @@
-package main;
+package com.anroypaul.javasockethttpserver.helpers;
 
 public class ParseHelper {
     public static boolean isStringInt(String value) {

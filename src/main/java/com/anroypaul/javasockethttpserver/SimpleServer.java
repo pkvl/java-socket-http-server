@@ -1,5 +1,8 @@
-package main;
+package com.anroypaul.javasockethttpserver;
 
+import com.anroypaul.javasockethttpserver.dao.UserDAO;
+import com.anroypaul.javasockethttpserver.domain.User;
+import com.anroypaul.javasockethttpserver.helpers.ParseHelper;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -11,11 +14,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
 
-public class SimpleServer {
+class SimpleServer {
 
-    final String GET = "GET";
-    final String POST = "POST";
-    final int PORT = 1234;
+    private final String GET = "GET";
+    private final String POST = "POST";
+    private final int PORT = 1234;
 
     private final Logger LOGGER = LogManager.getLogger(SimpleServer.class);
     private String response;
@@ -24,7 +27,7 @@ public class SimpleServer {
     private String method;
     private String symbols;
 
-    public SimpleServer() throws IOException {
+    SimpleServer() throws IOException {
         this.server = new ServerSocket(PORT);
     }
 
@@ -104,11 +107,11 @@ public class SimpleServer {
         return parts;
     }
 
-    public String getResponse() {
+    private String getResponse() {
         return response;
     }
 
-    public void setResponse(String response) {
+    private void setResponse(String response) {
         this.response = response;
     }
 }

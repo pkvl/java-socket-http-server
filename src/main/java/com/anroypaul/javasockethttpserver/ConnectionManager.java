@@ -1,4 +1,4 @@
-package main;
+package com.anroypaul.javasockethttpserver;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -10,14 +10,14 @@ import java.sql.SQLException;
 public class ConnectionManager {
 
     // JDBC driver name and database URL
-    public static final String JDBC_DRIVER = "org.h2.Driver";
-    public static final String DB_URL = "jdbc:h2:tcp://localhost/~/test";
+    private static final String JDBC_DRIVER = "org.h2.Driver";
+    private static final String DB_URL = "jdbc:h2:tcp://localhost/~/test";
 
     //  Database credentials
-    public static final String USER = "sa";
-    public static final String PASS = "";
+    private static final String USER = "sa";
+    private static final String PASS = "";
 
-    public static Connection conn;
+    private static Connection conn;
 
     private static final Logger LOG = LogManager.getLogger(ConnectionManager.class);
 
