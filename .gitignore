@@ -1,5 +1,6 @@
-bin
 .idea
+bin
+target
 *.log
 *.jar
 *.iml
