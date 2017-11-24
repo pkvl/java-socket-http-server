@@ -13,7 +13,6 @@ public class SocketHttpServer {
 
     public static void main(String[] args) throws IOException, URISyntaxException, SQLException {
         LOGGER.info("Application started");
-        SimpleServer simpleServer = new SimpleServer();
-        simpleServer.startServer();
+        new SimpleServer().startServer();
     }
 }

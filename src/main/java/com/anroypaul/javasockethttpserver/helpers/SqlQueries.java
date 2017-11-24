@@ -21,7 +21,7 @@ public class SqlQueries {
         sb.append("INSERT INTO ").append(tableName).append(" VALUES");
         sb.append("(");
         for(int i = 0; i < values.length; i++) {
-            sb.append(values[i]);
+            sb.append("'").append(values[i]).append("'");
             if(i < values.length - 1) {
                 sb.append(",");
             }
