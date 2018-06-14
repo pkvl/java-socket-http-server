@@ -1,7 +1,7 @@
 CREATE TABLE user (
-	ID INT PRIMARY KEY,
-	NAME VARCHAR(50),
-	SURNAME VARCHAR(50)
+	id INT PRIMARY KEY,
+	first_name VARCHAR(50),
+	last_name VARCHAR(50)
 );
 
 INSERT INTO user VALUES(1, 'John', 'Smith');

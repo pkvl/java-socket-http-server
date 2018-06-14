@@ -1,10 +1,10 @@
-package com.anroypaul.javasockethttpserver;
+package com.anroypaul.javasockethttpserver.server;
 
 import com.anroypaul.javasockethttpserver.dao.UserDAO;
 import com.anroypaul.javasockethttpserver.domain.User;
 import com.anroypaul.javasockethttpserver.helpers.ParseHelper;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,24 +14,27 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
 
-class SimpleServer {
+public class SimpleServerImpl implements SimpleServer {
+
+    private SimpleRequest simpleRequest;
+    private SimpleResponse simpleResponse;
 
     private final String GET = "GET";
     private final String POST = "POST";
     private final int PORT = 1234;
 
-    private final Logger LOGGER = LogManager.getLogger(SimpleServer.class);
+    private final Logger LOGGER = LogManager.getLogger(SimpleServerImpl.class);
     private String response;
     private ServerSocket server;
 
     private String method;
     private String symbols;
 
-    SimpleServer() throws IOException {
+    public SimpleServerImpl() throws IOException {
         this.server = new ServerSocket(PORT);
     }
 
-    public void startServer() throws IOException, SQLException {
+    public void start() throws IOException, SQLException {
         LOGGER.debug("Listening for connection on port " + PORT + "...");
 
         while (true) {
@@ -114,4 +117,8 @@ class SimpleServer {
     private void setResponse(String response) {
         this.response = response;
     }
+
+    public void requestHandler() { }
+
+    public void responseHandler() { }
 }

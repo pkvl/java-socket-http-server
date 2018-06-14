@@ -16,9 +16,7 @@ public class SocketHttpServer {
         ConnectionManager.DatabaseType databaseType = ConnectionManager.DatabaseType.H2;
         ConnectionFactory connectionFactory = ConnectionManager.getConnectionFactory(databaseType);
 
-        Application application = new Application(connectionFactory);
-        application.start();
-
+        new Application(connectionFactory).start();
         LOGGER.info("Application started!");
     }
 }

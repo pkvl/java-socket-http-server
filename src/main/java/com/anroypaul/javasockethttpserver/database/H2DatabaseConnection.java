@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class H2DatabaseConnection implements Connection {
@@ -35,5 +36,20 @@ public class H2DatabaseConnection implements Connection {
         } catch (ClassNotFoundException ex) {
             LOGGER.error("Driver not found.");
         }
+    }
+
+    @Override
+    public void executeQuery(String sql) {
+
+    }
+
+    @Override
+    public void mapResult(ResultSet resultSet, Object model) {
+
+    }
+
+    @Override
+    public void close() throws SQLException {
+        conn.close();
     }
 }
