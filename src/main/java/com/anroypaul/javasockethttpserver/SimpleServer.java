@@ -66,14 +66,14 @@ class SimpleServer {
                     parts = ParseHelper.removeSpaces(ParseHelper.extractIndex(parts, 1));
                     // Check if ID is integer
                     if (ParseHelper.isStringInt(parts[0]))
-                        id = new Integer(parts[0]);
+                        id = Integer.valueOf(parts[0]);
                     setResponse(new UserDAO().getInfoById(id));
                     break;
                 // Set HTTP response with adding info about user to DB
                 case POST:
                     symbols = parts[1];
                     if (ParseHelper.isStringInt(parts[1]))
-                        id = new Integer(parts[1]);
+                        id = Integer.valueOf(parts[1]);
                     String name = parts[2];
                     String surname = ParseHelper.extractIndex(ParseHelper.removeSpaces(parts, 3), 0);
                     setResponse(new UserDAO().add(new User(id, name, surname)));
