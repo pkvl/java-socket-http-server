@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.util.StringTokenizer;
 
 public class SimpleServerImpl implements SimpleServer {
 
@@ -32,23 +33,23 @@ public class SimpleServerImpl implements SimpleServer {
 
     public SimpleServerImpl() throws IOException {
         this.server = new ServerSocket(PORT);
+        this.start();
     }
 
-    public void start() throws IOException, SQLException {
+    private void start() throws IOException {
         LOGGER.debug("Listening for connection on port " + PORT + "...");
 
         while (true) {
             try (Socket socket = server.accept();
                  BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                 PrintWriter out = new PrintWriter(socket.getOutputStream()))
-            {
+                 PrintWriter out = new PrintWriter(socket.getOutputStream())) {
                 LOGGER.info("Client connected");
                 printReply(out);
 
                 // Read HTTP request from the client
                 // Get Request lines
                 String parts[] = getRequest(in, out);
-                requestHandler(parts);
+//                requestHandler(parts);
                 out.print(getResponse());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -70,7 +71,7 @@ public class SimpleServerImpl implements SimpleServer {
                     // Check if ID is integer
                     if (ParseHelper.isStringInt(parts[0]))
                         id = Integer.valueOf(parts[0]);
-                    setResponse(new UserDAO().getInfoById(id));
+//                    setResponse(new UserDAO().getInfoById(id));
                     break;
                 // Set HTTP response with adding info about user to DB
                 case POST:
@@ -79,7 +80,7 @@ public class SimpleServerImpl implements SimpleServer {
                         id = Integer.valueOf(parts[1]);
                     String name = parts[2];
                     String surname = ParseHelper.extractIndex(ParseHelper.removeSpaces(parts, 3), 0);
-                    setResponse(new UserDAO().add(new User(id, name, surname)));
+//                    setResponse(new UserDAO().add(new User(id, name, surname)));
                     break;
                 default:
                     LOGGER.error("Wrong REST-method");
@@ -101,12 +102,28 @@ public class SimpleServerImpl implements SimpleServer {
     private String[] getRequest(BufferedReader in, PrintWriter out) throws IOException {
         String line;
         String[] parts = null;
-        while ((line = in.readLine()) != null && line.length() != 0) {
-            if (parts == null)
-                parts = line.split("/");
-
+        boolean checkNextLine = false;
+        while ((line = in.readLine()) != null) {
             out.print(line + "\r\n");
+            System.out.print(line + "\r\n");
+
+//            if (checkNextLine) {
+//                if (line.isEmpty()) {
+//                    break;
+//                }
+//            }
+//
+//            if (line.isEmpty()) {
+//                checkNextLine = true;
+//            }
         }
+//        while (!(line = in.readLine().trim()).isEmpty()) {
+//            if (parts == null)
+//                parts = line.split("/");
+//
+//            out.print(line + "\r\n");
+//            System.out.print(line + "\r\n");
+//        }
         return parts;
     }
 
@@ -118,7 +135,9 @@ public class SimpleServerImpl implements SimpleServer {
         this.response = response;
     }
 
-    public void requestHandler() { }
+    public void requestHandler() {
+    }
 
-    public void responseHandler() { }
+    public void responseHandler() {
+    }
 }

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public interface SimpleServer {
 
-    public void start() throws IOException, SQLException;
+//    private void start() throws IOException, SQLException;
 
     void requestHandler();
 
