@@ -13,5 +13,8 @@
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileOutput"/>
         </Root>
+        <Logger name="com.anroypaul" level="DEBUG">
+            <AppenderRef ref="DEBUG_LOG"/>
+        </Logger>
     </Loggers>
 </Configuration>
